@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Src/Mover3D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Mover3D_PhysicsProcess_NoInterpolation.gd" type="Script" id=2]
+[ext_resource path="res://Src/Core/Interpolation/Interpolation3D.tscn" type="PackedScene" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="KinematicBody_PhysicsProcess" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+script = ExtResource( 2 )
+
+[node name="KinematicBody_PhysicsProcess_Interpolation" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+script = ExtResource( 2 )
+
+[node name="Interpolation3D" parent="KinematicBody_PhysicsProcess_Interpolation" instance=ExtResource( 3 )]
+target_path = NodePath("../MeshInstance")
+just_work_mode = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11 )
+
+[editable path="KinematicBody_PhysicsProcess_Interpolation"]

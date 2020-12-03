@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/Mover2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Mover2D_PhysicsProcess_NoInterpolation.gd" type="Script" id=2]
+[ext_resource path="res://Src/Mover2D_Process.gd" type="Script" id=3]
+[ext_resource path="res://Src/Core/Interpolation/Interpolation2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Mover2D_PhysicsProcess_Interpolation.gd" type="Script" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 483.909
+margin_top = 35.678
+margin_right = 564.909
+margin_bottom = 49.678
+text = "process only"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mover2D_Process" parent="." instance=ExtResource( 1 )]
+position = Vector2( 522.909, 96.678 )
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 421.909
+margin_top = 165.678
+margin_right = 629.909
+margin_bottom = 179.678
+text = "physics process no interpolation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mover2D_PhysicsProcess_NoInterpolation" parent="." instance=ExtResource( 1 )]
+position = Vector2( 522.909, 226.678 )
+script = ExtResource( 2 )
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 419.909
+margin_top = 307.678
+margin_right = 638.909
+margin_bottom = 321.678
+text = "physics process with interpolation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mover2D_PhysicsProcess_Interpolation" parent="." instance=ExtResource( 1 )]
+position = Vector2( 522.909, 369.678 )
+script = ExtResource( 5 )
+
+[node name="Interpolation2D" parent="Mover2D_PhysicsProcess_Interpolation" instance=ExtResource( 4 )]
+target_path = NodePath("../icon")
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 385.909
+margin_top = 442.678
+margin_right = 674.909
+margin_bottom = 456.678
+text = "physics process with interpolation (just work)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mover2D_PhysicsProcess_Interpolation_JustWork" parent="." instance=ExtResource( 1 )]
+position = Vector2( 522.909, 509.678 )
+script = ExtResource( 2 )
+
+[node name="Interpolation2D" parent="Mover2D_PhysicsProcess_Interpolation_JustWork" instance=ExtResource( 4 )]
+target_path = NodePath("../icon")
+just_work_mode = true
+
+[editable path="Mover2D_PhysicsProcess_Interpolation"]
+
+[editable path="Mover2D_PhysicsProcess_Interpolation_JustWork"]
